@@ -19,6 +19,6 @@ node {
 		}
 	} catch(err) {
 		abortPipeline(err)
-	{
+	}
 }
 
