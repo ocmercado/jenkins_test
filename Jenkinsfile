@@ -14,13 +14,13 @@ if (ACL_BUILD.contains(BRANCH_NAME)) {
 	echo "Skipping build. Branch is not in ACL_BUILD.."
 }
 
-if (BRANCH_NAME==~ACL_TEST) {
+if (ACL_TEST.contains(BRANCH_NAME)) {
 	echo "Testing..." 
 } else {
 	echo "Skipping test. Branch is not in ACL_TEST.."
 }
 
-if (BRANCH_NAME==~ACL_DEPLOY) {
+if (ACL_DEPLOY.contains(BRANCH_NAME)) {
 	echo "Deploying..." 
 } else {
 	echo "Skipping deployment. Branch is not in ACL_DEPLOY.."
