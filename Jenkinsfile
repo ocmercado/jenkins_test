@@ -22,3 +22,15 @@ node {
 	}
 }
 
+node {
+	try {
+		stage('BUILD') {
+			sh("rm -rf dist/ConfigFileHandler.zip");
+			sh("zip -r dist/ConfigFileHandler *");
+		}
+
+	} catch(err) {
+		abortPipeline(err)
+	}
+
+}
