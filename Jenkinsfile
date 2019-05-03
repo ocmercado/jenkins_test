@@ -8,7 +8,7 @@ DO_DEPLOY = "develop release hotfix master"
 BRANCH_NAME = env.BRANCH_NAME
 echo "We are at branch ${BRANCH_NAME}"
 echo "Build ACL: ${DO_BUILD}"
-if (BRANCH_NAME==~DO_BUILD) {
+if (BRANCH_NAME==~/DO_BUILD/) {
 	echo "Building..." 
 } else {
 	echo "Skipping build..."
