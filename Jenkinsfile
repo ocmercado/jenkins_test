@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 
-ACL_BUILD = "feature develop release hotfix master"
+ACL_BUILD = "feature develop release hotfix"
 ACL_TEST = "feature develop release hotfix master"
 ACL_DEPLOY = "develop release hotfix master"
 
