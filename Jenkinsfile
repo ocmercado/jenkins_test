@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 
-ACL_BUILD = "feature develop release hotfix"
+ACL_BUILD = "feature develop release hotfix master"
 ACL_TEST = "feature develop release hotfix master"
 ACL_DEPLOY = "develop release hotfix master"
 
@@ -49,4 +49,5 @@ node {
 	echo "Skipping Deploy stage. Branch is not in ACL_DEPLOY"
         currentBuild.result = 'ABORTED'
         return
+  }	
 }
