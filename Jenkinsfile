@@ -34,4 +34,19 @@ node {
   }
 }
 
+node {
+  if (ACL_DEPLOY.contains(BRANCH_NAME)){
+	try {
+		stage('DEPLOY') {
+			echo "Deploying..."
+		}
 
+	} catch(err) {
+		abortPipeline(err)
+	}
+
+  } else {
+	echo "Skipping Deploy stage. Branch is not in ACL_DEPLOY"
+        currentBuild.result = 'ABORTED'
+        return
+}
