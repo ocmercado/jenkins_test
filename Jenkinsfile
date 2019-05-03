@@ -29,6 +29,8 @@ node {
 	}
   } else {
 	echo "Skipping Build. Branch is not in ACL_BUILD"
+    	currentBuild.result = 'ABORTED'
+    	return
   }
 }
 
