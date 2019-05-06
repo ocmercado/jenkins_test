@@ -6,7 +6,7 @@ DO_TEST = "feature develop release hotfix master"
 DO_DEPLOY = "develop release hotfix master"
 
 BRANCH_NAME = env.BRANCH_NAME
-
+echo "We are at branch ${BRANCH_NAME}"
 if (BRANCH_NAME=~DO_BUILD) {
 	echo "Building..." 
 } else {
