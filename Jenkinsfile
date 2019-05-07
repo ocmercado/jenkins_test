@@ -14,7 +14,7 @@ def NODE_LABEL="master"
 // End: Node selection logic
 
 
-def BRANCH_NAME = env.BRANCH_NAME.toLowerCase()
+def BRANCH_NAME = env.BRANCH_NAME.toString().toLowerCase()
 
 def BRANCH_TYPE = BRANCH_NAME.contains("feature") ? "feature" : BRANCH_NAME
 BRANCH_TYPE = BRANCH_NAME.contains("release") ? "release" : BRANCH_NAME
