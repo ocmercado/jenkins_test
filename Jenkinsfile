@@ -6,12 +6,14 @@ def ACL_TEST = "feature develop release hotfix master"
 def ACL_DEPLOY = "develop release hotfix master"
 
 def BRANCH_NAME = env.BRANCH_NAME
+BRANCH_NAME="feature 1234"
 echo "Branch name:  ${BRANCH_NAME}"
 
 
 def BRANCH_TYPE = BRANCH_NAME.contains("feature") ? "feature" : BRANCH_NAME
-BRANCH_TYPE = BRANCH_NAME.contains("release") ? "release" : BRANCH_NAME
-BRANCH_TYPE = BRANCH_NAME.contains("hotfix") ? "hotfix" : BRANCH_NAME
+
+//BRANCH_TYPE = BRANCH_NAME.contains("release") ? "release" : BRANCH_NAME
+//BRANCH_TYPE = BRANCH_NAME.contains("hotfix") ? "hotfix" : BRANCH_NAME
 
 echo "Branch type: ${BRANCH_TYPE}"
 echo "Starting pipeline for branch ${BRANCH_NAME}"
