@@ -14,11 +14,11 @@ def NODE_LABEL="master"
 // End: Node selection logic
 
 
-def BRANCH_NAME = env.BRANCH_NAME.toString().toLowerCase()
-
-def BRANCH_TYPE = BRANCH_NAME.contains("feature") ? "feature" : BRANCH_NAME
-BRANCH_TYPE = BRANCH_NAME.contains("release") ? "release" : BRANCH_NAME
-BRANCH_TYPE = BRANCH_NAME.contains("hotfix") ? "hotfix" : BRANCH_NAME
+def BRANCH_NAME = env.BRANCH_NAME.toLowerCase()
+def BRANCH_TYPE = BRANCH_NAME
+BRANCH_TYPE = BRANCH_NAME.contains("feature") ? "feature" : BRANCH_TYPE
+BRANCH_TYPE = BRANCH_NAME.contains("release") ? "release" : BRANCH_TYPE
+BRANCH_TYPE = BRANCH_NAME.contains("hotfix") ? "hotfix" : BRANCH_TYPE
 
 echo "Branch name:  ${BRANCH_NAME}"
 echo "Branch type: ${BRANCH_TYPE}"
