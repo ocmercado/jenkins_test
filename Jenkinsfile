@@ -6,7 +6,7 @@ def ACL_TEST = "feature develop release hotfix master"
 def ACL_DEPLOY = "develop release hotfix master"
 
 def BRANCH_NAME = env.BRANCH_NAME
-BRANCH_NAME="feature/1234"
+BRANCH_NAME="GIT-123/feature"
 echo "Branch name:  ${BRANCH_NAME}"
 
 
@@ -68,8 +68,6 @@ node(NODE_LABEL) {
 
   } else {
         echo "Skipping Deploy stage. Branch is not in ACL_DEPLOY"
-        currentBuild.result = 'ABORTED'
-        return
   }     	
 }
 
