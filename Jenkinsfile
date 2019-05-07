@@ -25,6 +25,8 @@ def NODE_LABEL="master"
 
 node(NODE_LABEL) {
 
+  echo "Running pipeline on node ${NODE_LABEL}"
+
   // Start: Stage CHECKOUT and BUILD
   if (ACL_BUILD.contains(BRANCH_TYPE)) {
 	try {
