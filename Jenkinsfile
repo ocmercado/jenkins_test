@@ -1,15 +1,32 @@
 #!/usr/bin/env groovy
 
 
-ACL_BUILD = "feature develop release hotfix master"
-ACL_TEST = "feature develop release hotfix master"
-ACL_DEPLOY = "develop release hotfix master"
+def ACL_BUILD = "feature develop release hotfix master"
+def ACL_TEST = "feature develop release hotfix master"
+def ACL_DEPLOY = "develop release hotfix master"
 
-BRANCH_NAME = env.BRANCH_NAME
+def BRANCH_NAME = env.BRANCH_NAME
+echo "Branch name:  ${BRANCH_NAME}"
+
+
+def BRANCH_TYPE = BRANCH_NAME.contains('feature') ? "feature" : BRANCH_NAME
+BRANCH_TYPE = BRANCH_NAME.contains('release') ? "release" : BRANCH_NAME
+BRANCH_TYPE = BRANCH_NAME.contains('hotfix') ? "hotfix" : BRANCH_NAME
+
+echo "Branch type: ${BRANCH_TYPE}"
 echo "Starting pipeline for branch ${BRANCH_NAME}"
 
-node {
-  if (ACL_BUILD.contains(BRANCH_NAME)) {
+// Node selection logic here 
+
+def NODE_LABEL="master"
+
+// End: Node selection logic
+
+
+node(NODE_LABEL) {
+
+  // Start: Stage CHECKOUT and BUILD
+  if (ACL_BUILD.contains(BRANCH_TYPE)) {
 	try {
 		stage('CHECKOUT') {
 			checkout scm
@@ -32,22 +49,23 @@ node {
     	currentBuild.result = 'ABORTED'
     	return
   }
-}
+ // End: Stage CHECKOUT and BUILD
 
-node {
-  if (ACL_DEPLOY.contains(BRANCH_NAME)){
-	try {
-		stage('DEPLOY') {
-			echo "Deploying..."
-		}
+ // Start: Stage DEPLOY
+ if (ACL_DEPLOY.contains(BRANCH_TYPE)){
+        try {
+                stage('DEPLOY') {
+                        echo "Deploying..."
+                }
 
-	} catch(err) {
-		abortPipeline(err)
-	}
+        } catch(err) {
+                abortPipeline(err)
+        }
 
   } else {
-	echo "Skipping Deploy stage. Branch is not in ACL_DEPLOY"
+        echo "Skipping Deploy stage. Branch is not in ACL_DEPLOY"
         currentBuild.result = 'ABORTED'
         return
-  }	
+  }     	
 }
+
