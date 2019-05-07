@@ -15,8 +15,6 @@ def NODE_LABEL="master"
 
 
 def BRANCH_NAME = env.BRANCH_NAME.toLowerCase()
-BRANCH_NAME="release-2.1"
-echo "Branch: ${BRANCH_NAME}"
 def BRANCH_TYPE = BRANCH_NAME
 BRANCH_TYPE = BRANCH_NAME.contains("feature") ? "feature" : BRANCH_TYPE
 BRANCH_TYPE = BRANCH_NAME.contains("release") ? "release" : BRANCH_TYPE
